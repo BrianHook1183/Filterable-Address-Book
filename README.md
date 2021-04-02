@@ -1,5 +1,3 @@
----
-
 # JSDOM: Assignment
 
 You are building a contact book. The list of contacts and relevant details are stored in an array named `contacts`. You wish to create a few helper functions to display the contacts, filter by city and make a few modifications.
