@@ -349,12 +349,12 @@ function loadCities(contacts) {
   contacts.forEach((contact) => {
     const thisCity = contact.address.city;
     //!  none-qualified version - handles edge case for  "South vale"
-      const thisCityLower = thisCity.toLowerCase();
-      if (!Object.values(uniqueCitiesObj).includes(thisCityLower)) {
-        uniqueCitiesObj[thisCity] = thisCityLower;
-      }
+    const thisCityLower = thisCity.toLowerCase();
+    if (!Object.values(uniqueCitiesObj).includes(thisCityLower)) {
+      uniqueCitiesObj[thisCity] = thisCityLower;
+    }
     //! Qualified solution necessary to pass tests, but doesn't handle edge case.
-/*       if (!Object.keys(uniqueCitiesObj).includes(thisCity)) {
+    /*       if (!Object.keys(uniqueCitiesObj).includes(thisCity)) {
         uniqueCitiesObj[thisCity] = true;
       }
  */
@@ -396,11 +396,11 @@ function deleteButtonHandler(event) {
 
     // Preserves filter view after a deletion
     let currentFilter = document.getElementById("filterOptions");
-    const filterCity = currentFilter.selectedOptions[0].label;
+    const filterCity = currentFilter.selectedOptions[0].value;
     // create the expected argument structure for filterHandler's parameter
     const filterObject = {
-      "target": {
-        "value": filterCity
+      target: {
+        value: filterCity,
       },
     };
 
