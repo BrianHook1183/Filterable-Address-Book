@@ -297,6 +297,9 @@ function renderContact(contact) {
 function render(contacts) {
   let contactsHtml = "";
   contactsHtml = contacts.map((contact) => renderContact(contact)).join("");
+  if (contacts.length == 0) {
+    contactsHtml = `<p>0 results</p>`;
+  }
 
   const contactsSection = document.getElementById("contacts");
   contactsSection.innerHTML = contactsHtml;
@@ -350,10 +353,11 @@ function loadCities(contacts) {
       if (!Object.values(uniqueCitiesObj).includes(thisCityLower)) {
         uniqueCitiesObj[thisCity] = thisCityLower;
       }
-    //! This is the solution necessary to pass qualified test, but doesn't handle edge case.
-/*     if (!Object.keys(uniqueCitiesObj).includes(thisCity)) {
-      uniqueCitiesObj[thisCity] = true;
-    } */
+    //! Qualified solution necessary to pass tests, but doesn't handle edge case.
+/*       if (!Object.keys(uniqueCitiesObj).includes(thisCity)) {
+        uniqueCitiesObj[thisCity] = true;
+      }
+ */
   });
 
   const uniqueCityList = Object.keys(uniqueCitiesObj);
