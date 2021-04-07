@@ -1,3 +1,7 @@
+////////////////////////////
+// DO NOT EDIT THIS ARRAY //
+////////////////////////////
+
 window.contacts = [
   {
     id: 1,
@@ -293,9 +297,7 @@ function render(contacts) {
 
 function filterByCity(city) {
   const lowerCity = city.toLowerCase();
-  return contacts.filter(
-    (contact) => contact.address.city.toLowerCase() === lowerCity
-  );
+  return contacts.filter((contact) => contact.address.city.toLowerCase() === lowerCity);
 }
 
 function filterHandler(event) {
@@ -317,11 +319,16 @@ function loadCities(contacts) {
 
   contacts.forEach((contact) => {
     const thisCity = contact.address.city;
-    // handle case typos in city names
+    //!  none-qualified version - handles edge case for  "South vale"
     const thisCityLower = thisCity.toLowerCase();
     if (!Object.values(uniqueCitiesObj).includes(thisCityLower)) {
       uniqueCitiesObj[thisCity] = thisCityLower;
     }
+    //! Qualified solution necessary to pass tests, but doesn't handle edge case.
+    /*       if (!Object.keys(uniqueCitiesObj).includes(thisCity)) {
+        uniqueCitiesObj[thisCity] = true;
+      }
+ */
   });
 
   const uniqueCityList = Object.keys(uniqueCitiesObj);
@@ -339,6 +346,7 @@ function deleteContact(idX) {
     const id = contacts[i].id;
     if (id == idX) {
       contacts.splice(i, 1);
+      //! I am smart
       break;
     }
   }
@@ -376,10 +384,9 @@ function main() {
 
 window.addEventListener("DOMContentLoaded", main);
 
-///////////////////////////////////
-// WRITE YOUR SOLUTION CODE ABOVE //
-///////////////////////////////////
-
+//////////////////////////////////////////
+// DO NOT EDIT ANYTHING BELOW THIS LINE //
+//////////////////////////////////////////
 window.contacts = contacts;
 window.renderContact = renderContact;
 window.render = render;
