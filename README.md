@@ -1,8 +1,8 @@
 # City Filter for Contacts | Vanilla JavaScript DOM Manipulation
 
-An assignment for Thinkful Software Engineering bootcamp. You can interact with the live version of this project at [brianhook1183.github.io/JSDOM_final-assignment/](https://brianhook1183.github.io/JSDOM_final-assignment/)
+[Live Site](https://brianhook1183.github.io/JSDOM_final-assignment/)
 
-My individual contribution is all of the javascript written between the `"WRITE YOUR SOLUTION CODE..."` comments in `src/index.js`. Everything else is from the [starter project](https://github.com/Thinkful-Ed/jsdom-assignment-solution)
+This is an assignment for Thinkful's Software Engineering bootcamp ([starter project](https://github.com/Thinkful-Ed/jsdom-assignment-solution)).
 
 ## What it Does
 + `Filter By City` list is dynamically generated from the given `contacts` list
@@ -20,6 +20,11 @@ I added the following features and improvements after the assignment was submitt
 + Cities that have zero contacts to display can still be selected, `"0 results"` will display. 
 + Added a custom favicon
 
-## Other Notes 
+## Skills Used
 
 The focus of the assignment was DOM manipulation done purely through vanilla js - no jquery or other additional libraries.
++ selecting elements
++ updating the DOM
++ event listeners
++ form submissions
++ render pattern
