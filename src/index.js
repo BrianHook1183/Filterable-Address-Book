@@ -1,9 +1,3 @@
-////////////////////////////
-// DO NOT EDIT THIS ARRAY //
-////////////////////////////
-/*
- The contacts array contain the list of contacts for the contact book.
-*/
 window.contacts = [
   {
     id: 1,
@@ -239,13 +233,9 @@ window.contacts = [
 ];
 
 ///////////////////////////////////
-// WRITE YOUR SOLUTION CODE HERE //
+// WRITE YOUR SOLUTION CODE BELOW //
 ///////////////////////////////////
 
-/*
- Create and return the HTML to render a single contact card.
- The `contact` parameter is an object representing a single contact. 
-*/
 function renderContact(contact) {
   const {
     id,
@@ -290,10 +280,6 @@ function renderContact(contact) {
   return contactTemplate;
 }
 
-/*
-  Render the array of contacts and insert them on the DOM.
-  The contacts should be rendered in the `section` with id "contacts".
-*/
 function render(contacts) {
   let contactsHtml = "";
   contactsHtml = contacts.map((contact) => renderContact(contact)).join("");
@@ -303,27 +289,15 @@ function render(contacts) {
 
   const contactsSection = document.getElementById("contacts");
   contactsSection.innerHTML = contactsHtml;
-
-  // loadCities(contacts);
 }
 
-/*
-  Filter by city. Filter the  array of contacts by the given city.
-  Return a new array containing the filtered list. 
-  Do NOT modify the original array.
-*/
 function filterByCity(city) {
   const lowerCity = city.toLowerCase();
-  return contacts.filter((contact) => contact.address.city.toLowerCase() === lowerCity);
+  return contacts.filter(
+    (contact) => contact.address.city.toLowerCase() === lowerCity
+  );
 }
 
-/*
-  Add an `change` event listener to the `filterOptions` select element.
-  On `change` get the value selected by the user. 
-  If the value is "0" call `render()` with the complete contacts list.
-  If the value is not "0" call `filterByCity()` passing the value selected by
-  the user. Then call `render()` with the filtered list.
-*/
 function filterHandler(event) {
   const selectedCity = event.target.value;
   if (selectedCity === "0") {
@@ -334,12 +308,6 @@ function filterHandler(event) {
   }
 }
 
-/*
-  Accepts an array of contacts.
-  Populate the select with id `filterOptions` with the list of cities.
-  Create a list of cities from the contacts array with no duplicates then
-  add an `<option>` element for each city to the select.
-*/
 function loadCities(contacts) {
   const filterOptions = document.querySelector("#filterOptions");
   // reset <options>... to default state
@@ -349,16 +317,11 @@ function loadCities(contacts) {
 
   contacts.forEach((contact) => {
     const thisCity = contact.address.city;
-    //!  none-qualified version - handles edge case for  "South vale"
+    // handle case typos in city names
     const thisCityLower = thisCity.toLowerCase();
     if (!Object.values(uniqueCitiesObj).includes(thisCityLower)) {
       uniqueCitiesObj[thisCity] = thisCityLower;
     }
-    //! Qualified solution necessary to pass tests, but doesn't handle edge case.
-    /*       if (!Object.keys(uniqueCitiesObj).includes(thisCity)) {
-        uniqueCitiesObj[thisCity] = true;
-      }
- */
   });
 
   const uniqueCityList = Object.keys(uniqueCitiesObj);
@@ -371,26 +334,16 @@ function loadCities(contacts) {
   filterOptions.innerHTML += cityOptions;
 }
 
-/*
-  Remove the contact from the contact list with the given id.
-*/
 function deleteContact(idX) {
   for (let i = 0; i < contacts.length; i++) {
     const id = contacts[i].id;
     if (id == idX) {
       contacts.splice(i, 1);
-      //! I am smart
       break;
     }
   }
 }
 
-/*
-  Add a `click` event handler to the `deleteBtn` elements.
-  When clicked, get the id of the card that was clicked from the 
-  corresponding `data-id` then call `deleteContact()` and re-render 
-  the list.
-*/
 function deleteButtonHandler(event) {
   if (event.target.className === "deleteBtn") {
     const id = event.target.parentNode.dataset.id;
@@ -410,10 +363,6 @@ function deleteButtonHandler(event) {
   }
 }
 
-/*
-  Perform all startup tasks here. Use this function to attach the 
-  required event listeners, call loadCities() then call render().
-*/
 function main() {
   loadCities(contacts);
   render(contacts);
@@ -427,9 +376,10 @@ function main() {
 
 window.addEventListener("DOMContentLoaded", main);
 
-//////////////////////////////////////////
-// DO NOT EDIT ANYTHING BELOW THIS LINE //
-//////////////////////////////////////////
+///////////////////////////////////
+// WRITE YOUR SOLUTION CODE ABOVE //
+///////////////////////////////////
+
 window.contacts = contacts;
 window.renderContact = renderContact;
 window.render = render;
