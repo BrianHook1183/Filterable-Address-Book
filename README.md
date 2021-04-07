@@ -1,14 +1,30 @@
 # JSDOM: Assignment
 
-An assignment for Thinkful Software Engineering bootcamp. Original instructions below. 
+An assignment for Thinkful Software Engineering bootcamp. You can interact with the live version of this project at [brianhook1183.github.io/JSDOM_final-assignment/](https://brianhook1183.github.io/JSDOM_final-assignment/)
 
-### Additional Features I Added
+## What it Does
++ Filter By City list is dynamically generated from the given `contacts` list
++ Selecting " -- Select a city --" will render all contact cards to the DOM
++ Selecting any other city will filter the contact cards
++ Deleting a contact card will delete that contact from `contacts` and remove the card from the DOM (you can reset by reloading the page).
++ When all contact cards are deleted for the filtered city, "0 results" will display
+
+## Additional Features
+I added the following features and improvements after the assignment was submitted and accepted (`test/solution.test.js` may no longer show all passing tests because of these updates).
 + handled edge case of capitalization errors in a contact's listed city
-++ ("South Vale" and "South vale" assumed to be same city - now merged in filter dropdown)
+   + ("South Vale" and "South vale" assumed to be same city - now merged in Filter By City dropdown)
 + filtered view now persists after a contact is deleted instead of refreshing to all contacts.
 + "0 results" feedback when the last contact of a selected city is deleted
++ Cities that have zero contacts to display can still be selected, "0 results" will display. 
++ Added a custom favicon
 
-# Assignment Instructions
+## Languages Used
++ JavaScript
+  + DOM manipulation is done purely through vanilla js - no jquery.
+---
+---
+---
+## Assignment Instructions
 
 You are building a contact book. The list of contacts and relevant details are stored in an array named `contacts`. You wish to create a few helper functions to display the contacts, filter by city and make a few modifications.
 
