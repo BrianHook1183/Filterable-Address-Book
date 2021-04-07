@@ -345,19 +345,15 @@ function loadCities(contacts) {
 
   contacts.forEach((contact) => {
     const thisCity = contact.address.city;
-
-    //!  This is a better solution for the "unique cities" requirement given in prompt. However, handling the edge case of typos (upper/lower case) in the city names causes an unintended failed test in Qualified.  Test expects 5 unique cities only because of "South vale" typo- there are actually only 4 unique cities.
-    /* 
+    //!  none-qualified version - handles edge case for  "South vale"
       const thisCityLower = thisCity.toLowerCase();
       if (!Object.values(uniqueCitiesObj).includes(thisCityLower)) {
         uniqueCitiesObj[thisCity] = thisCityLower;
       }
-      */
-
     //! This is the solution necessary to pass qualified test, but doesn't handle edge case.
-    if (!Object.keys(uniqueCitiesObj).includes(thisCity)) {
+/*     if (!Object.keys(uniqueCitiesObj).includes(thisCity)) {
       uniqueCitiesObj[thisCity] = true;
-    }
+    } */
   });
 
   const uniqueCityList = Object.keys(uniqueCitiesObj);
@@ -393,9 +389,19 @@ function deleteContact(idX) {
 function deleteButtonHandler(event) {
   if (event.target.className === "deleteBtn") {
     const id = event.target.parentNode.dataset.id;
+
+    // Preserves filter view after a deletion
+    let currentFilter = document.getElementById("filterOptions");
+    const filterCity = currentFilter.selectedOptions[0].label;
+    // create the expected argument structure for filterHandler's parameter
+    const filterObject = {
+      "target": {
+        "value": filterCity
+      },
+    };
+
     deleteContact(id);
-    loadCities(contacts);
-    render(contacts);
+    filterHandler(filterObject);
   }
 }
 
