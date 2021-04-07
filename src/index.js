@@ -313,7 +313,8 @@ function render(contacts) {
   Do NOT modify the original array.
 */
 function filterByCity(city) {
-  return contacts.filter((contact) => contact.address.city === city);
+  const lowerCity = city.toLowerCase();
+  return contacts.filter((contact) => contact.address.city.toLowerCase() === lowerCity);
 }
 
 /*
