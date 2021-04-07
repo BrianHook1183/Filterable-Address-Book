@@ -1,5 +1,15 @@
 # JSDOM: Assignment
 
+An assignment for Thinkful Software Engineering bootcamp. Original instructions below. 
+
+### Additional Features I Added
++ handled edge case of capitalization errors in a contact's listed city
+++ ("South Vale" and "South vale" assumed to be same city - now merged in filter dropdown)
++ filtered view now persists after a contact is deleted instead of refreshing to all contacts.
++ "0 results" feedback when the last contact of a selected city is deleted
+
+# Assignment Instructions
+
 You are building a contact book. The list of contacts and relevant details are stored in an array named `contacts`. You wish to create a few helper functions to display the contacts, filter by city and make a few modifications.
 
 ## Existing Files
